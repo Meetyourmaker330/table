@@ -20,3 +20,10 @@
   display: block;
   z-index: 1000;
 }
+
+.modal-dialog {
+  width: 500px;
+  position: absolute;
+  top: calc(50% - 284px);
+  left: calc(50% - 250px);
+}
