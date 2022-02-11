@@ -14,12 +14,12 @@
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container pt-2 pb-2">
       <!-- header -->
       <div class="row mb-3">
         <div class="col-12">
           <div
-            class="header d-flex justify-content-between align-items-center p-3 border border-3 border-warning"
+            class="header d-flex justify-content-between align-items-center p-2 border border-3 border-warning"
           >
             <h1 class="h2">Table</h1>
             <button type="button" class="btn btn-dark" id="new-person">
@@ -29,81 +29,51 @@
         </div>
       </div>
       <!-- table -->
-      <div class="row board-header d-flex justify-content-around mb-3">
-        <div
-          class="col-2 d-flex justify-content-center align-items-center border border-3 border-warning"
+      <div class="table-responive">
+        <table
+          class="table table-bordered border-3 border-warning align-middle"
         >
-          ID
-        </div>
-        <div
-          class="col-2 d-flex justify-content-center align-items-center border border-3 border-warning"
-        >
-          Name
-        </div>
-        <div
-          class="col-2 d-flex justify-content-center align-items-center border border-3 border-warning"
-        >
-          Last-name
-        </div>
-        <div
-          class="col-2 d-flex justify-content-center align-items-center border border-3 border-warning"
-        >
-          Country
-        </div>
-        <div
-          class="col-2 d-flex justify-content-center align-items-center border border-3 border-warning"
-        >
-          City
-        </div>
+          <thead id="thead"></thead>
+          <tbody id="tbody"></tbody>
+        </table>
       </div>
-      <!-- table -->
-      <div class="row" id="board"></div>
       <!-- modal -->
-      <div class="modal" id="modal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New person</h5>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-1">
-                  <label for="id" class="col-form-label">ID:</label>
-                  <input type="text" class="form-control" id="id" />
-                </div>
-                <div class="mb-1">
-                  <label for="name" class="col-form-label">Name:</label>
-                  <input type="text" class="form-control" id="name" />
-                </div>
-                <div class="mb-1">
-                  <label for="last-name" class="col-form-label"
-                    >Last name:</label
-                  >
-                  <input type="text" class="form-control" id="last-name" />
-                </div>
-                <div class="mb-1">
-                  <label for="country" class="col-form-label">Country:</label>
-                  <input type="text" class="form-control" id="country" />
-                </div>
-                <div class="mb-1">
-                  <label for="city" class="col-form-label">City:</label>
-                  <input type="text" class="form-control" id="city" />
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                id="close-modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary" id="append-person">
-                Add person
-              </button>
-            </div>
+      <div class="modal-dialog hidden" id="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New person</h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-1">
+                <label for="id" class="col-form-label">ID:</label>
+                <input type="text" class="form-control" id="id" />
+              </div>
+              <div class="mb-1">
+                <label for="name" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="name" />
+              </div>
+              <div class="mb-1">
+                <label for="last-name" class="col-form-label">Last name:</label>
+                <input type="text" class="form-control" id="last-name" />
+              </div>
+              <div class="mb-1">
+                <label for="country" class="col-form-label">Country:</label>
+                <input type="text" class="form-control" id="country" />
+              </div>
+              <div class="mb-1">
+                <label for="city" class="col-form-label">City:</label>
+                <input type="text" class="form-control" id="city" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="close-modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="append-person">
+              Add person
+            </button>
           </div>
         </div>
       </div>

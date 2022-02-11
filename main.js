@@ -3,22 +3,20 @@ const modalWindow = document.getElementById('modal')
 const closeModal = document.getElementById('close-modal')
 const appendPerson = document.getElementById('append-person')
 const overlay = document.getElementById('overlay')
-const board = document.getElementById('board')
-const userTable = document.createElement('table')
-board.appendChild(userTable)
+
 
 // data
-const data = []
+const userArr = []
 
 // function open modal
 const showModalWindow = () => {
    modalWindow.classList.add('show')
-   overlay.classList.add('show', 'overlay')
+   overlay.classList.add('overlay')
 }
 // function close modal
 const closeModalWindow = () => {
    modalWindow.classList.remove('show')
-   overlay.classList.remove('show', 'overlay')
+   overlay.classList.remove('overlay')
 }
 
 // open modal
@@ -27,14 +25,17 @@ newPersonBtn.addEventListener('click', () => {
 })
 
 // close modal
+overlay.addEventListener('click', closeModalWindow)
 closeModal.addEventListener('click', () => {
    closeModalWindow()
 })
 document.addEventListener('keydown', (e) => {
-   if (e.key === 'Escape' && !modalWindow.classList.contains('hidden')) {
+   if (e.key === 'Escape' && modalWindow.classList.contains('show')) {
       closeModalWindow()
    }
 })
+
+// add user
 appendPerson.addEventListener('click', () => {
    let userId = document.getElementById('id').value
    let userName = document.getElementById('name').value
@@ -42,20 +43,13 @@ appendPerson.addEventListener('click', () => {
    let userCountry = document.getElementById('country').value
    let userCity = document.getElementById('city').value
 
-   data.push(new NewUser(userId, userName, userLastname, userCountry, userCity))
+   userArr.push(new NewUser(userId, userName, userLastname, userCountry, userCity))
+   drawTable()
+   drawHeadingTable()
    closeModalWindow()
 
-
-   // draw table
-
-   for (let i = 0; i < data.length; i++) {
-      let trElement = document.createElement('tr')
-      userTable.appendChild(trElement)
-      let tdElement = document.createElement('td')
-      trElement.appendChild(tdElement)
-   }
-   console.log(data)
 })
+
 
 // function create user
 
@@ -66,4 +60,36 @@ function NewUser(id, name, lastName, country, city) {
    this.lastName = lastName
    this.country = country
    this.city = city
+}
+
+
+// draw table 
+
+const drawTable = () => {
+   let tableHtml = ''
+   userArr.forEach(elem => {
+      tableHtml += `
+      <tr class="align-middle">
+        <td class="table-warning">${elem.id}</td>
+        <td class="table-warning">${elem.name}</td>
+        <td class="table-warning">${elem.lastName}</td>
+        <td class="table-warning">${elem.country}</td>
+        <td class="table-warning">${elem.city}</td>
+      </tr>`
+   })
+   document.getElementById('tbody').innerHTML = tableHtml
+}
+
+const drawHeadingTable = () => {
+   let headingTable = ''
+   headingTable += `
+   <tr class="table-info align-middle">
+   <th scope="col">ID</th>
+   <th scope="col">Name</th>
+   <th scope="col">Last Name</th>
+   <th scope="col">Country</th>
+   <th scope="col">City</th>
+   </tr>
+   `
+   document.getElementById('thead').innerHTML = headingTable
 }

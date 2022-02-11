@@ -1,5 +1,6 @@
 .hidden {
   display: none;
+  z-index: 1050;
 }
 
 .show {
@@ -16,5 +17,6 @@
   height: 100%;
   background-color: rgba(225, 225, 225, 0.1);
   backdrop-filter: blur(3px);
-  z-index: 1;
+  display: block;
+  z-index: 1000;
 }
