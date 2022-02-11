@@ -43,8 +43,8 @@ appendPerson.addEventListener('click', () => {
    let userCountry = document.getElementById('country').value
    let userCity = document.getElementById('city').value
 
-   if (isEveryInputEmpty()) {
-      alert('заполните все поля')
+   if (userId === '' || userName === '' || userLastname === '' || userCountry === '' || userCity === '') {
+      alert('Заполните все поля')
    } else {
       userArr.push(new NewUser(userId, userName, userLastname, userCountry, userCity))
       drawTable()
@@ -96,15 +96,4 @@ const drawHeadingTable = () => {
    </tr>
    `
    document.getElementById('thead').innerHTML = headingTable
-}
-
-
-const isEveryInputEmpty = () => {
-   let inputs = document.querySelectorAll('.form-control')
-
-   for (const input of inputs) {
-      if (input.value !== '') return false
-
-      return true
-   }
 }
