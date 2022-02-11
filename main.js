@@ -43,10 +43,15 @@ appendPerson.addEventListener('click', () => {
    let userCountry = document.getElementById('country').value
    let userCity = document.getElementById('city').value
 
-   userArr.push(new NewUser(userId, userName, userLastname, userCountry, userCity))
-   drawTable()
-   drawHeadingTable()
-   closeModalWindow()
+   // field validation
+   if (userId === '' && userName === '' && userLastname === '' && userCountry === '' && userCity === '') {
+      alert('Заполните все поля')
+   } else {
+      userArr.push(new NewUser(userId, userName, userLastname, userCountry, userCity))
+      drawTable()
+      drawHeadingTable()
+      closeModalWindow()
+   }
 
 })
 
