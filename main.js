@@ -5,7 +5,6 @@ const appendPerson = document.getElementById('append-person')
 const overlay = document.getElementById('overlay')
 const btnDeleteLastUser = document.getElementById('delete-last-user')
 const btnDeleteUser = document.getElementById('delete-user')
-let userId = document.getElementById('id')
 let userName = document.getElementById('name')
 let userLastname = document.getElementById('last-name')
 let userCountry = document.getElementById('country')
@@ -14,38 +13,31 @@ let userCity = document.getElementById('city')
 
 // data
 const userArr = [{
-      id: '1',
-      name: 'какой то чел ',
-      lastName: 'фамилия чела',
-      country: 'страна чела',
-      city: 'город чела'
+      id: '0',
+      name: 'Guf',
+      lastName: 'Iz Centra',
+      Country: 'Rashka',
+      City: 'Moscow',
    },
    {
-      id: '1',
-      name: 'какой то чел ',
-      lastName: 'фамилия чела',
-      country: 'страна чела',
-      city: 'город чела'
+      id: `1`,
+      name: 'Slim',
+      lastName: 'Iz Centra',
+      Country: 'Rashka',
+      City: 'Moscow',
    },
    {
-      id: '1',
-      name: 'какой то чел ',
-      lastName: 'фамилия чела',
-      country: 'страна чела',
-      city: 'город чела'
+      id: '2',
+      name: 'Ptaha',
+      lastName: 'Iz Centra',
+      Country: 'Rashka',
+      City: 'Moscow',
    },
-   {
-      id: '1',
-      name: 'какой то чел ',
-      lastName: 'фамилия чела',
-      country: 'страна чела',
-      city: 'город чела'
-   },
+
 ]
 
 // function open modal
 const showModalWindow = () => {
-   // userId.value = ''
    // userName.value = ''
    // userLastname.value = ''
    // userCountry.value = ''
@@ -79,28 +71,24 @@ document.addEventListener('keydown', (e) => {
 // add user
 appendPerson.addEventListener('click', () => {
 
-   if (userId.value === '' || userName.value === '' || userLastname.value === '' || userCountry.value === '' || userCity.value === '') {
+   if (userName.value === '' || userLastname.value === '' || userCountry.value === '' || userCity.value === '') {
       alert('Заполните все поля')
    } else {
-      userArr.push(new NewUser(userId.value, userName.value, userLastname.value, userCountry.value, userCity.value))
+      userArr.push(new NewUser(userArr.length + 1, userName.value, userLastname.value, userCountry.value, userCity.value))
       drawTable()
       closeModalWindow()
-      console.log(userArr)
    }
 
 })
 
 // delete last user
 btnDeleteLastUser.addEventListener('click', () => {
-   for (let i = 0; i < userArr.length; i++) {
-      userArr[i] = userArr.pop()
-   }
+   deleteLastUser()
 })
 
 // function create user
 
 function NewUser(id, name, lastName, country, city) {
-
    this.id = id
    this.name = name
    this.lastName = lastName
@@ -124,4 +112,9 @@ const drawTable = () => {
       </tr>`
    })
    document.getElementById('tbody').innerHTML = tableHtml
+}
+
+
+const deleteLastUser = () => {
+
 }
