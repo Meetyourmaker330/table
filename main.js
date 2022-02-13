@@ -16,25 +16,26 @@ const userArr = [{
       id: '0',
       name: 'Guf',
       lastName: 'Iz Centra',
-      Country: 'Rashka',
-      City: 'Moscow',
+      сountry: 'Rashka',
+      сity: 'Moscow',
    },
    {
       id: `1`,
       name: 'Slim',
       lastName: 'Iz Centra',
-      Country: 'Rashka',
-      City: 'Moscow',
+      сountry: 'Rashka',
+      сity: 'Moscow',
    },
    {
       id: '2',
       name: 'Ptaha',
       lastName: 'Iz Centra',
-      Country: 'Rashka',
-      City: 'Moscow',
+      сountry: 'Rashka',
+      сity: 'Moscow',
    },
 
 ]
+
 
 // function open modal
 const showModalWindow = () => {
@@ -113,6 +114,7 @@ const drawTable = () => {
    })
    document.getElementById('tbody').innerHTML = tableHtml
 }
+drawTable()
 
 
 const deleteLastUser = () => {
