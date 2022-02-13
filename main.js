@@ -13,7 +13,35 @@ let userCity = document.getElementById('city')
 
 
 // data
-const userArr = []
+const userArr = [{
+      id: '1',
+      name: 'какой то чел ',
+      lastName: 'фамилия чела',
+      country: 'страна чела',
+      city: 'город чела'
+   },
+   {
+      id: '1',
+      name: 'какой то чел ',
+      lastName: 'фамилия чела',
+      country: 'страна чела',
+      city: 'город чела'
+   },
+   {
+      id: '1',
+      name: 'какой то чел ',
+      lastName: 'фамилия чела',
+      country: 'страна чела',
+      city: 'город чела'
+   },
+   {
+      id: '1',
+      name: 'какой то чел ',
+      lastName: 'фамилия чела',
+      country: 'страна чела',
+      city: 'город чела'
+   },
+]
 
 // function open modal
 const showModalWindow = () => {
@@ -57,15 +85,16 @@ appendPerson.addEventListener('click', () => {
       userArr.push(new NewUser(userId.value, userName.value, userLastname.value, userCountry.value, userCity.value))
       drawTable()
       closeModalWindow()
+      console.log(userArr)
    }
 
 })
 
 // delete last user
 btnDeleteLastUser.addEventListener('click', () => {
-   let tbody = document.getElementById('tbody')
-   tbody.removeChild(tbody.lastChild)
-   userArr.pop()
+   for (let i = 0; i < userArr.length; i++) {
+      userArr[i] = userArr.pop()
+   }
 })
 
 // function create user
