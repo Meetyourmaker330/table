@@ -3,6 +3,13 @@ const modalWindow = document.getElementById('modal')
 const closeModal = document.getElementById('close-modal')
 const appendPerson = document.getElementById('append-person')
 const overlay = document.getElementById('overlay')
+const btnDeleteLastUser = document.getElementById('delete-last-user')
+const btnDeleteUser = document.getElementById('delete-user')
+let userId = document.getElementById('id')
+let userName = document.getElementById('name')
+let userLastname = document.getElementById('last-name')
+let userCountry = document.getElementById('country')
+let userCity = document.getElementById('city')
 
 
 // data
@@ -10,6 +17,12 @@ const userArr = []
 
 // function open modal
 const showModalWindow = () => {
+   // userId.value = ''
+   // userName.value = ''
+   // userLastname.value = ''
+   // userCountry.value = ''
+   // userCity.value = ''
+
    modalWindow.classList.add('show')
    overlay.classList.add('overlay')
 }
@@ -37,23 +50,23 @@ document.addEventListener('keydown', (e) => {
 
 // add user
 appendPerson.addEventListener('click', () => {
-   let userId = document.getElementById('id').value
-   let userName = document.getElementById('name').value
-   let userLastname = document.getElementById('last-name').value
-   let userCountry = document.getElementById('country').value
-   let userCity = document.getElementById('city').value
 
-   if (userId === '' || userName === '' || userLastname === '' || userCountry === '' || userCity === '') {
+   if (userId.value === '' || userName.value === '' || userLastname.value === '' || userCountry.value === '' || userCity.value === '') {
       alert('Заполните все поля')
    } else {
-      userArr.push(new NewUser(userId, userName, userLastname, userCountry, userCity))
+      userArr.push(new NewUser(userId.value, userName.value, userLastname.value, userCountry.value, userCity.value))
       drawTable()
-      drawHeadingTable()
       closeModalWindow()
    }
 
 })
 
+// delete last user
+btnDeleteLastUser.addEventListener('click', () => {
+   let tbody = document.getElementById('tbody')
+   tbody.removeChild(tbody.lastChild)
+   userArr.pop()
+})
 
 // function create user
 
@@ -73,7 +86,7 @@ const drawTable = () => {
    let tableHtml = ''
    userArr.forEach(elem => {
       tableHtml += `
-      <tr class="align-middle">
+      <tr class="align-middle" id="row-users">
         <td class="table-warning">${elem.id}</td>
         <td class="table-warning">${elem.name}</td>
         <td class="table-warning">${elem.lastName}</td>
@@ -82,18 +95,4 @@ const drawTable = () => {
       </tr>`
    })
    document.getElementById('tbody').innerHTML = tableHtml
-}
-
-const drawHeadingTable = () => {
-   let headingTable = ''
-   headingTable += `
-   <tr class="table-info align-middle">
-   <th scope="col">ID</th>
-   <th scope="col">Name</th>
-   <th scope="col">Last Name</th>
-   <th scope="col">Country</th>
-   <th scope="col">City</th>
-   </tr>
-   `
-   document.getElementById('thead').innerHTML = headingTable
 }

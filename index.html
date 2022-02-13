@@ -22,9 +22,25 @@
             class="header d-flex justify-content-between align-items-center p-2 border border-3 border-warning"
           >
             <h1 class="h2">Table</h1>
-            <button type="button" class="btn btn-dark" id="new-person">
-              New
-            </button>
+            <div class="btn-container">
+              <button type="button" class="btn btn-dark" id="new-person">
+                New user
+              </button>
+              <button
+                type="button"
+                class="btn btn-warning ms-3"
+                id="delete-last-user"
+              >
+                Delete last user
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger ms-3"
+                id="delete-user"
+              >
+                Delete user
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -33,7 +49,15 @@
         <table
           class="table table-bordered border-3 border-warning align-middle"
         >
-          <thead id="thead"></thead>
+          <thead id="thead">
+            <tr class="table-info align-middle">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Last Name</th>
+              <th>Country</th>
+              <th>City</th>
+            </tr>
+          </thead>
           <tbody id="tbody"></tbody>
         </table>
       </div>
