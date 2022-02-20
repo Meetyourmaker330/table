@@ -17,10 +17,10 @@ const userArr = []
 
 // function open modal
 const showModalWindow = () => {
-   // userName.value = ''
-   // userLastname.value = ''
-   // userCountry.value = ''
-   // userCity.value = ''
+   userName.value = ''
+   userLastname.value = ''
+   userCountry.value = ''
+   userCity.value = ''
 
    modalWindow.classList.add('show')
    overlay.classList.add('overlay')
@@ -57,6 +57,7 @@ appendPerson.addEventListener('click', () => {
       drawTable()
       closeModalWindow()
       console.log(userArr)
+      deleteUser()
    }
 
 })
@@ -74,7 +75,7 @@ const newUser = (id, name, lastName, country, city, ) => {
       lastName: lastName,
       country: country,
       city: city,
-      removeUser: `<button type="button" class="btn-close"></button>`,
+      removeUser: `<button type="button" class="btn-close" data-id="${id}"></button>`,
    })
 }
 
@@ -99,21 +100,34 @@ const drawTable = () => {
 
 
 
-const removeUserFunc = () => {
-   let btnRemove = document.querySelectorAll('.btn-close')
-   for (let i = 0; i < btnRemove.length; i++) {
-      let deleteRow = btnRemove[i]
-      deleteRow.addEventListener('click', () => {
-         let valueIndex = userArr.indexOf(userArr[i])
-         console.log(userArr[i])
+// let btnRemove = document.querySelectorAll('.btn-close')
+// for (let i = 0; i < btnRemove.length; i++) {
+//    deleteRow.addEventListener('click', (e) => {
+//       removeUser(e.target.dataset.id);
+//       console.log(e)
+//    });
+// }
 
-         console.log(valueIndex)
+// const deleteUser = () => {
+//    const removeBtn = document.querySelectorAll('.btn-close')
+//    removeBtn.addEventListener('click', function (e) {
+//       let targetItem = e.target;
+//       if (targetItem.closest('.remove-button')) {
+//          removeUser(targetItem.dataset.id);
+//       }
+//    });
+// }
 
-         userArr.splice(valueIndex, 1)
+// function removeUser(id) {
+//    if (userArr.length > 0) {
+//       for (var index = 0; index < userArr.length; index++) {
+//          let user = userArr[index];
+//          if (user.id === id) {
+//             let spliced = userArr.splice(index, 1);
+//             console.log("Removed element by id: ", id);
+//          }
+//       }
+//    }
+// }
 
-         drawTable()
-      })
-
-   }
-}
-removeUserFunc()
+// removeUser()
