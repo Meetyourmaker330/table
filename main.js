@@ -53,11 +53,10 @@ appendPerson.addEventListener('click', () => {
    if (userName.value === '' || userLastname.value === '' || userCountry.value === '' || userCity.value === '') {
       alert('Заполните все поля')
    } else {
-      newUser(userArr.length, userName.value, userLastname.value, userCountry.value, userCity.value)
+      newUser(userArr.length + 1, userName.value, userLastname.value, userCountry.value, userCity.value)
       drawTable()
       closeModalWindow()
       console.log(userArr)
-      deleteUser()
    }
 
 })
@@ -75,7 +74,7 @@ const newUser = (id, name, lastName, country, city, ) => {
       lastName: lastName,
       country: country,
       city: city,
-      removeUser: `<button type="button" class="btn-close" data-id="${id}"></button>`,
+      removeUser: `<button type="button" class="btn-close" onClick="removeUser(${id})"></button>`,
    })
 }
 
@@ -99,35 +98,16 @@ const drawTable = () => {
 }
 
 
+const removeUser = (id) => {
+   if (userArr.length > 0) {
 
-// let btnRemove = document.querySelectorAll('.btn-close')
-// for (let i = 0; i < btnRemove.length; i++) {
-//    deleteRow.addEventListener('click', (e) => {
-//       removeUser(e.target.dataset.id);
-//       console.log(e)
-//    });
-// }
+      for (let index = 0; index < userArr.length; index++) {
+         let user = userArr[index];
+         if (user.id === id) {
+            userArr.splice(index, 1)
+            drawTable()
+         }
+      }
 
-// const deleteUser = () => {
-//    const removeBtn = document.querySelectorAll('.btn-close')
-//    removeBtn.addEventListener('click', function (e) {
-//       let targetItem = e.target;
-//       if (targetItem.closest('.remove-button')) {
-//          removeUser(targetItem.dataset.id);
-//       }
-//    });
-// }
-
-// function removeUser(id) {
-//    if (userArr.length > 0) {
-//       for (var index = 0; index < userArr.length; index++) {
-//          let user = userArr[index];
-//          if (user.id === id) {
-//             let spliced = userArr.splice(index, 1);
-//             console.log("Removed element by id: ", id);
-//          }
-//       }
-//    }
-// }
-
-// removeUser()
+   }
+}
