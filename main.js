@@ -97,7 +97,7 @@ const drawTable = () => {
    document.getElementById('tbody').innerHTML = tableHtml
 }
 
-
+// remove user
 const removeUser = (id) => {
    if (userArr.length > 0) {
 
