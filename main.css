@@ -27,3 +27,7 @@
   top: calc(50% - 284px);
   left: calc(50% - 250px);
 }
+/* th {
+  display: flex;
+  justify-content: center;
+} */
