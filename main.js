@@ -4,6 +4,7 @@ const closeModal = document.getElementById('close-modal')
 const appendPerson = document.getElementById('append-person')
 const overlay = document.getElementById('overlay')
 const btnDeleteLastUser = document.getElementById('delete-last-user')
+let editUserBtn = document.getElementById('edit')
 let userName = document.getElementById('name')
 let userLastname = document.getElementById('last-name')
 let userCountry = document.getElementById('country')
@@ -29,6 +30,7 @@ const closeModalWindow = () => {
 // open modal
 newPersonBtn.addEventListener('click', () => {
    showModalWindow()
+   editUserBtn.classList.add('none')
    userName.value = ''
    userLastname.value = ''
    userCountry.value = ''
@@ -73,7 +75,7 @@ const newUser = (id, name, lastName, country, city, ) => {
       lastName: lastName,
       country: country,
       city: city,
-      editUser: `<a href="#" class="link-dark" onClick="editUser(${id})">
+      editUser: `<a href="#" class="link-dark" onClick="editUserFunc(${id})">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -117,8 +119,27 @@ const removeUser = (id) => {
 
    }
 }
-
 // edit user
-const editUser = (id) => {
+const editUserFunc = (id) => {
+   editUserBtn.classList.remove('none')
    showModalWindow()
+   appendPerson.classList.add('none')
+   let userId = userArr.find(elem => {
+      return elem.id === id
+   })
+   document.querySelector('.btn-success').addEventListener('click', () => {
+      let editedName = document.getElementById('name')
+      let editedLastName = document.getElementById('last-name')
+      let editedCountry = document.getElementById('country')
+      let editedCity = document.getElementById('city')
+      userId.name = editedName.value
+      userId.lastName = editedLastName.value
+      userId.country = editedCountry.value
+      userId.city = editedCity.value
+      editUserBtn.classList.add('none')
+      appendPerson.classList.remove('none')
+      closeModalWindow()
+      drawTable()
+      console.log(userArr)
+   })
 }

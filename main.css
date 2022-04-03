@@ -2,11 +2,12 @@
   display: none;
   z-index: 1050;
 }
-
+.none {
+  display: none;
+}
 .show {
   display: block;
 }
-
 .overlay {
   position: absolute;
   top: 0;
@@ -19,6 +20,7 @@
   backdrop-filter: blur(3px);
   display: block;
   z-index: 1000;
+  pointer-events: none;
 }
 
 .modal-dialog {
