@@ -128,9 +128,7 @@ function editUser(id) {
 
    editUserBtn.addEventListener('click', () => {
       for (let i = 0; i < userArr.length; i++) {
-         let user = userArr[i].id
-
-         if (id === user) {
+         if (userArr[i].id === id) {
             userArr[i].name = document.getElementById('name').value
             userArr[i].lastName = document.getElementById('last-name').value
             userArr[i].country = document.getElementById('country').value
