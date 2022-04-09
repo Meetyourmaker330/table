@@ -129,10 +129,11 @@ function editUser(id) {
    editUserBtn.addEventListener('click', () => {
       for (let i = 0; i < userArr.length; i++) {
          if (userArr[i].id === id) {
-            userArr[i].name = document.getElementById('name').value
-            userArr[i].lastName = document.getElementById('last-name').value
-            userArr[i].country = document.getElementById('country').value
-            userArr[i].city = document.getElementById('city').value
+
+            editName = document.getElementById('name').value
+            editLastName = document.getElementById('last-name').value
+            editCountry = document.getElementById('country').value
+            editCity = document.getElementById('city').value
             drawTable()
             closeModalWindow()
          }
