@@ -121,22 +121,33 @@ const removeUser = (id) => {
    }
 }
 
+let selectedUser = {}
+let pos = 0
+
+editUserBtn.addEventListener('click', () => {
+   editFunc()
+})
+
+function editFunc() {
+   userArr[pos].name = document.getElementById('name').value
+   userArr[pos].lastName = document.getElementById('name').value
+   userArr[pos].country = document.getElementById('name').value
+   userArr[pos].city = document.getElementById('name').value
+
+   drawTable()
+   closeModalWindow()
+}
 
 function editUser(id) {
-   showModalWindow()
    editUserBtn.classList.remove('none')
 
-   editUserBtn.addEventListener('click', () => {
-      for (let i = 0; i < userArr.length; i++) {
-         if (userArr[i].id === id) {
+   pos = id === '0' ? id : (parseInt(id) - 1)
+   selectedUser = userArr[pos]
 
-            editName = document.getElementById('name').value
-            editLastName = document.getElementById('last-name').value
-            editCountry = document.getElementById('country').value
-            editCity = document.getElementById('city').value
-            drawTable()
-            closeModalWindow()
-         }
-      }
-   })
+   document.getElementById('name').value = selectedUser.name
+   document.getElementById('last-name').value = selectedUser.lastName
+   document.getElementById('country').value = selectedUser.country
+   document.getElementById('city').value = selectedUser.city
+
+   showModalWindow()
 }
