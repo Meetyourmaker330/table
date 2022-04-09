@@ -125,4 +125,19 @@ const removeUser = (id) => {
 function editUser(id) {
    showModalWindow()
    editUserBtn.classList.remove('none')
+
+   editUserBtn.addEventListener('click', () => {
+      for (let i = 0; i < userArr.length; i++) {
+         let user = userArr[i]
+
+         if (user.id === id) {
+            user.name = document.getElementById('name').value
+            user.lastName = document.getElementById('last-name').value
+            user.country = document.getElementById('country').value
+            user.city = document.getElementById('city').value
+            drawTable()
+            closeModalWindow()
+         }
+      }
+   })
 }
