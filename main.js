@@ -148,7 +148,6 @@ editUserBtn.addEventListener('click', (item) => {
 
 function editUser(id) {
    editUserBtn.classList.remove('none')
-   appendPerson.style.display = 'none'
    user = id
    if (userArr.length >= 1) {
       userArr.forEach(item => {
@@ -158,6 +157,8 @@ function editUser(id) {
             document.getElementById('country').value = item.country
             document.getElementById('city').value = item.city
 
+
+            appendPerson.style.display = 'none'
             showModalWindow()
          }
       })
