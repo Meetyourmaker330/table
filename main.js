@@ -31,7 +31,7 @@ const closeModalWindow = () => {
 newPersonBtn.addEventListener('click', () => {
    showModalWindow()
    editUserBtn.classList.add('none')
-   appendPerson.style.display = 'block'
+   appendPerson.classList.add('show')
    userName.value = ''
    userLastname.value = ''
    userCountry.value = ''
@@ -147,6 +147,8 @@ editUserBtn.addEventListener('click', (item) => {
 
 
 function editUser(id) {
+   appendPerson.classList.remove('show')
+   appendPerson.classList.add('none')
    editUserBtn.classList.remove('none')
    user = id
    if (userArr.length >= 1) {
@@ -158,7 +160,6 @@ function editUser(id) {
             document.getElementById('city').value = item.city
 
 
-            appendPerson.style.display = 'none'
             showModalWindow()
          }
       })
