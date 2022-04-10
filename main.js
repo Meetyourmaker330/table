@@ -31,6 +31,7 @@ const closeModalWindow = () => {
 newPersonBtn.addEventListener('click', () => {
    showModalWindow()
    editUserBtn.classList.add('none')
+   appendPerson.style.display = 'block'
    userName.value = ''
    userLastname.value = ''
    userCountry.value = ''
@@ -121,33 +122,47 @@ const removeUser = (id) => {
    }
 }
 
-let selectedUser = {}
-let pos = 0
 
-editUserBtn.addEventListener('click', () => {
-   editFunc()
+
+let user
+
+
+editUserBtn.addEventListener('click', (item) => {
+   item = user
+
+   userArr.forEach((el, index) => {
+      let elem = el
+      if (elem.id === item) {
+         elem.name = document.getElementById('name').value
+         elem.lastName = document.getElementById('last-name').value
+         elem.country = document.getElementById('country').value
+         elem.city = document.getElementById('city').value
+         drawTable()
+         closeModalWindow()
+      }
+   })
 })
 
-function editFunc() {
-   userArr[pos].name = document.getElementById('name').value
-   userArr[pos].lastName = document.getElementById('name').value
-   userArr[pos].country = document.getElementById('name').value
-   userArr[pos].city = document.getElementById('name').value
 
-   drawTable()
-   closeModalWindow()
-}
+
 
 function editUser(id) {
    editUserBtn.classList.remove('none')
+   appendPerson.style.display = 'none'
+   user = id
+   if (userArr.length >= 1) {
+      userArr.forEach(item => {
+         if (item.id === user) {
+            document.getElementById('name').value = item.name
+            document.getElementById('last-name').value = item.lastName
+            document.getElementById('country').value = item.country
+            document.getElementById('city').value = item.city
 
-   pos = id === '0' ? id : (parseInt(id) - 1)
-   selectedUser = userArr[pos]
+            showModalWindow()
+         }
+      })
+   }
 
-   document.getElementById('name').value = selectedUser.name
-   document.getElementById('last-name').value = selectedUser.lastName
-   document.getElementById('country').value = selectedUser.country
-   document.getElementById('city').value = selectedUser.city
 
-   showModalWindow()
+   return user
 }
