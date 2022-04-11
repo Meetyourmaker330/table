@@ -4,6 +4,7 @@ const closeModal = document.getElementById('close-modal')
 const appendPerson = document.getElementById('append-person')
 const overlay = document.getElementById('overlay')
 const btnDeleteLastUser = document.getElementById('delete-last-user')
+let modalTitle = document.querySelector('.modal-title')
 let editUserBtn = document.getElementById('edit')
 let userName = document.getElementById('name')
 let userLastname = document.getElementById('last-name')
@@ -32,6 +33,7 @@ newPersonBtn.addEventListener('click', () => {
    showModalWindow()
    editUserBtn.classList.add('none')
    appendPerson.classList.add('show')
+   modalTitle.textContent = 'New user'
    userName.value = ''
    userLastname.value = ''
    userCountry.value = ''
@@ -150,6 +152,7 @@ function editUser(id) {
    appendPerson.classList.remove('show')
    appendPerson.classList.add('none')
    editUserBtn.classList.remove('none')
+   modalTitle.textContent = 'Edit user'
    user = id
    if (userArr.length >= 1) {
       userArr.forEach(item => {
